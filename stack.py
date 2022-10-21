@@ -20,11 +20,18 @@ class Stack:
             top_node = self.top
             new_node.next = top_node
             self.top = new_node
+            self.length += 1
 
     def pop(self):
-        pass
+        if (self.length > 0):
+            temp = self.top
+            self.top = self.top.next
+            self.length -= 1
+            return temp
 
     def __str__(self):
+        if (self.length <= 0):
+            return 'Stack empty'
         output = ""
         current_node = self.top
         while current_node:
@@ -39,4 +46,11 @@ if __name__ == '__main__':
     stack.push(2)
     stack.push(3)
     stack.push(4)
+    stack.pop()
+    stack.pop()
+    stack.pop()
+    stack.pop()
+    stack.pop()
+    stack.push(5)
+    stack.pop()
     print(stack)
