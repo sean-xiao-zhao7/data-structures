@@ -8,15 +8,35 @@ class Stack:
         self.length = 0
 
     def peek(self):
-        pass
+        return self.top
 
     def push(self, new_value):
         new_node = Node(new_value)
-        pass
+        if (not self.top):
+            self.top = new_node
+            self.bottom = new_node
+            self.length = 1
+        else:
+            top_node = self.top
+            new_node.next = top_node
+            self.top = new_node
 
     def pop(self):
         pass
 
+    def __str__(self):
+        output = ""
+        current_node = self.top
+        while current_node:
+            output += str(current_node) + " -> "
+            current_node = current_node.next
+        return output
+
 
 if __name__ == '__main__':
-    pass
+    stack = Stack()
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    stack.push(4)
+    print(stack)
