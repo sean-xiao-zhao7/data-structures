@@ -49,7 +49,22 @@ class LinkedList:
             previous_node.next = current_node.next
             self.length -= 1
 
+    def reverse(self):
+        if (self.length > 1):
+            current_node = self.head
+            previous_node = None
+            while current_node:
+                next_node = current_node.next
+                current_node.next = previous_node
+                previous_node = current_node
+                current_node = next_node
+
+        placeholder = self.head
+        self.head = self.tail
+        self.tail = placeholder
+
     # helper methods
+
     def traverse(self, index):
         """Return current and previous nodes at index"""
         current_index = 0
@@ -79,5 +94,7 @@ if __name__ == "__main__":
     list1.append(5)
     list1.prepend(10)
     list1.insert(12, 1)
-    list1.remove(0)
+    # list1.remove(0)
+    print(list1)
+    list1.reverse()
     print(list1)
