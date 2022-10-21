@@ -1,3 +1,6 @@
+from node import Node
+
+
 class DoublyLinkedList:
     def __init__(self, initial_value):
         self.head = Node(initial_value)
@@ -70,16 +73,6 @@ class DoublyLinkedList:
             current_node = current_node.next
             current_index += 1
         return (current_node, previous_node)
-
-
-class Node:
-    def __init__(self, value, next=None, previous=None) -> None:
-        self.value = value
-        self.next = next
-        self.previous = previous
-
-    def __str__(self) -> str:
-        return f'[Node {self.value}]'
 
 
 if __name__ == "__main__":
