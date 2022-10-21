@@ -37,17 +37,31 @@ class LinkedList:
             new_node.next = current_node
             self.length += 1
 
+    def remove(self, index):
+        if (self.length == 1):
+            self.head = None
+            self.length = 0
+        elif (index == 0):
+            self.head = self.head.next
+            self.length -= 1
+        else:
+            (current_node, previous_node) = self.traverse(index)
+            previous_node.next = current_node.next
+            self.length -= 1
+
+    # helper methods
     def traverse(self, index):
         """Return current and previous nodes at index"""
         current_index = 0
         current_node = self.head
         previous_node = None
-        while current_node:
+        while current_node.next:
             if index == current_index:
                 return (current_node, previous_node)
             previous_node = current_node
             current_node = current_node.next
             current_index += 1
+        return (current_node, previous_node)
 
 
 class Node:
@@ -65,4 +79,5 @@ if __name__ == "__main__":
     list1.append(5)
     list1.prepend(10)
     list1.insert(12, 1)
+    list1.remove(0)
     print(list1)
