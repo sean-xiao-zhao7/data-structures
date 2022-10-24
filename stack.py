@@ -24,10 +24,10 @@ class Stack:
 
     def pop(self):
         if (self.length > 0):
-            temp = self.top
+            node = self.top
             self.top = self.top.next
             self.length -= 1
-            return temp
+            return node
 
     def __str__(self):
         if (self.length <= 0):
